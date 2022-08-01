@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/person")
-
+@CrossOrigin(origins = "*")
 public class PersonController {
 
     /*mediante una inyeccion de dependencia, conectamos nuestra
