@@ -5,9 +5,11 @@
  */
 package com.miportfolio.ammolina.service;
 
+import com.miportfolio.ammolina.exception.UserNotFoundException;
 import com.miportfolio.ammolina.model.Education;
 import com.miportfolio.ammolina.repository.IEducationRepository;
 import java.util.List;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,39 +18,35 @@ import org.springframework.stereotype.Service;
  * @author Sisita
  */
 @Service
+@Transactional
 public class EducationService implements IEducationService{
 
     @Autowired
-    public IEducationRepository ieducationrepository;
+    public IEducationRepository iEducationRepository;
     
     @Override
     public List<Education> getAllEducation() {
-        return ieducationrepository.findAll();
-    }
-
-    @Override
-    public void saveEducation(Education education) {
-        ieducationrepository.save(education);
+        return iEducationRepository.findAll();
     }
 
     @Override
     public void deleteEducation(Long id) {
-        ieducationrepository.deleteById(id);
+        iEducationRepository.deleteById(id);
     }
 
     @Override
-    public Education searchEducation(Long id) {
-        return ieducationrepository.findById(id).orElse(null);
+    public Education getEducationById(Long id) {
+        return iEducationRepository.findById(id).orElseThrow(() -> new UserNotFoundException("Education by id " + id + "was not found."));
     }
 
     @Override
     public Education addEducation(Education education) {
-        return ieducationrepository.save(education);
+        return iEducationRepository.save(education);
     }
 
     @Override
-    public Education editEducation(Education education) {
-        return ieducationrepository.save(education);
+    public Education updateEducation(Education education) {
+        return iEducationRepository.save(education);
     }
     
 }

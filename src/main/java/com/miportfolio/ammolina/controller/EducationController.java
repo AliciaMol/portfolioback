@@ -9,7 +9,9 @@ import com.miportfolio.ammolina.model.Education;
 import com.miportfolio.ammolina.service.IEducationService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,8 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -27,53 +27,43 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/education")
-//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class EducationController {
 
+    private final IEducationService iEducationService; //interface
     @Autowired
-    private IEducationService ieducationservice;
-
-    @ResponseBody
+    public EducationController(IEducationService iEducationService) {
+        this.iEducationService = iEducationService;
+    }
+    
+    @PostMapping("/add")
+    public ResponseEntity<Education> addEducation(@RequestBody Education education) {
+       Education newEducation = iEducationService.addEducation(education);
+       return new ResponseEntity<>(newEducation, HttpStatus.CREATED);
+    }
+    
     @GetMapping("/getall")
-    public List<Education> getAllEducation() {
-        return ieducationservice.getAllEducation();
+    public ResponseEntity<List<Education>> getAllEducation() {
+        List<Education> educations=iEducationService.getAllEducation();
+        return new ResponseEntity<>(educations, HttpStatus.OK);
     }
 
-    @PostMapping("/new")
-    public String addEducation(@RequestBody Education education) {
-        ieducationservice.saveEducation(education);
-        return "El registro de sus estudios se creó correctamente.";
-    }
-    
     @DeleteMapping("/delete/{id}")
-    public String deleteEducation(@PathVariable Long id) {
-        ieducationservice.deleteEducation(id);
-        return "El registro de estudio se eliminó";
+    public ResponseEntity<?> deleteEducation(@PathVariable ("id")Long id) {
+        iEducationService.deleteEducation(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("/edit/{id}")
-    public Education editEducation(@PathVariable Long id,
-            @RequestParam("title") String newTitle,
-            @RequestParam("career") String newCareer,
-            @RequestParam("faculty") String newFaculty,
-            @RequestParam("houseOfStudies") String newHouseOfStidies,
-            @RequestParam("startDate") String newStartDate,
-            @RequestParam("endingDate") String newEndingDate,
-            @RequestParam("imageURL") String newImageURL) {
-        Education education = ieducationservice.searchEducation(id);
-        education.setTitle(newTitle);
-        education.setCareer(newCareer);
-        education.setFaculty(newFaculty);
-        education.setHouseOfStudies(newHouseOfStidies);
-        education.setStartDate(newStartDate);
-        education.setEndingDate(newEndingDate);
-        education.setImageURL(newImageURL);
-        return education;
+    @PutMapping("/update")
+    public ResponseEntity <Education> updateEducation(@RequestBody Education education) {
+        Education updateEducation = iEducationService.updateEducation(education);
+        return new ResponseEntity<>(updateEducation,HttpStatus.OK);
     }
     
-    @GetMapping("/search/{id}")
-    public Education searcEducation(@PathVariable Long id){ //(@PathVariable("id") Long id) {
-        return ieducationservice.searchEducation(id);
+    @GetMapping("/getone/{id}")
+    public ResponseEntity<Education> getEducationById(@PathVariable("id") Long id) { //(@PathVariable("id") Long id) {
+        Education education = iEducationService.getEducationById(id);
+        return new ResponseEntity<>(education, HttpStatus.OK);
     }
     
 }

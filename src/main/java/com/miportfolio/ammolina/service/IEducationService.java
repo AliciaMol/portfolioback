@@ -15,8 +15,7 @@ import java.util.List;
 public interface IEducationService {
     public List<Education> getAllEducation();
     public Education addEducation(Education education);
-    public void saveEducation(Education education);
     public void deleteEducation(Long id);
-    public Education searchEducation(Long id);
-    public Education editEducation(Education education);
+    public Education getEducationById(Long id);
+    public Education updateEducation(Education education);
 }
