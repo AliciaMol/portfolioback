@@ -23,7 +23,7 @@ import lombok.Setter;
 @Setter
 @Entity
 /*Con la anotation Entity indicamos que esta clase va a ser el modelo*/
-public class Person implements Serializable{
+public class Person implements Serializable {
 
     @Id         //Con la anotation indicamos que va a ser la clave principal el id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,23 +32,23 @@ public class Person implements Serializable{
 //    @NotNull
 //    @Size(min =1, max = 45, message = "Ingrese un nombre por favor")
     private String name;
-    
+
 //    @NotNull
 //    @Size(min =1, max = 45, message = "Ingrese un apellido por favor")
     private String lastname;
-    
+
 //    @Size(min =1, max = 45, message = "Ingrese su correo electrónico por favor")
     private String email;
-    
+
 //    @Size(min =1, max = 300, message = "Ingrese su ocupación por favor")
     private String ocupation;
-    
+
     private String phone;
-    
+
 //    @Size(min =1, max = 500, message = "Ingrese una descripción acerca de usted,"
 //            + " por favor")
     private String aboutmedescription;
-    
+
 //      @Size(min =1, max = 150, message = "Ingrese la url de su imagen de perfil por favor")
     private String imageurl;
 
@@ -65,11 +65,10 @@ public class Person implements Serializable{
         this.aboutmedescription = aboutmedescription;
         this.imageurl = imageurl;
     }
-    
+
     @Override
     public String toString() {
         return "Person{" + "id=" + id + ", nombre=" + name + ", apellido=" + lastname + ", email=" + email + ", ocupacion=" + ocupation + ", teléfono=" + phone + ", acerca de mí=" + aboutmedescription + ", imagen URL=" + imageurl + '}';
     }
 
 }
-

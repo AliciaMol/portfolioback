@@ -19,11 +19,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Transactional
-public class EducationService implements IEducationService{
+public class EducationService implements IEducationService {
 
     @Autowired
     public IEducationRepository iEducationRepository;
-    
+
     @Override
     public List<Education> getAllEducation() {
         return iEducationRepository.findAll();
@@ -48,5 +48,5 @@ public class EducationService implements IEducationService{
     public Education updateEducation(Education education) {
         return iEducationRepository.save(education);
     }
-    
+
 }

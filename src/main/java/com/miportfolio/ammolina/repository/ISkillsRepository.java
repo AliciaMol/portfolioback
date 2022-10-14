@@ -5,7 +5,7 @@
  */
 package com.miportfolio.ammolina.repository;
 
-import com.miportfolio.ammolina.model.Education;
+import com.miportfolio.ammolina.model.Skills;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
  * @author Sisita
  */
 @Repository
-public interface IEducationRepository extends JpaRepository<Education, Long> {
+public interface ISkillsRepository extends JpaRepository<Skills, Long> {
 
-    public Optional<Education> getEducationById(Long id);
+    public Optional<Skills> getSkillsById(Long id);
 }

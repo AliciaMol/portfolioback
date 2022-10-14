@@ -13,9 +13,14 @@ import java.util.List;
  * @author Sisita
  */
 public interface IEducationService {
+
     public List<Education> getAllEducation();
+
     public Education addEducation(Education education);
+
     public void deleteEducation(Long id);
+
     public Education getEducationById(Long id);
+
     public Education updateEducation(Education education);
 }

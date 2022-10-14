@@ -15,8 +15,9 @@ import org.springframework.stereotype.Repository;
  * @author Sisita
  */
 @Repository
-public interface IPersonRepository extends JpaRepository<Person, Long>{
-    public Optional <Person> getPersonById(Long id);
+public interface IPersonRepository extends JpaRepository<Person, Long> {
+
+    public Optional<Person> getPersonById(Long id);
 }
 /*Le pasamos que tome de la clase Person, y el tipo de dato que 
 es la primary key que es id, por eso Long*/

@@ -31,39 +31,40 @@ import org.springframework.web.bind.annotation.RestController;
 public class EducationController {
 
     private final IEducationService iEducationService; //interface
+
     @Autowired
     public EducationController(IEducationService iEducationService) {
         this.iEducationService = iEducationService;
     }
-    
+
     @PostMapping("/add")
     public ResponseEntity<Education> addEducation(@RequestBody Education education) {
-       Education newEducation = iEducationService.addEducation(education);
-       return new ResponseEntity<>(newEducation, HttpStatus.CREATED);
+        Education newEducation = iEducationService.addEducation(education);
+        return new ResponseEntity<>(newEducation, HttpStatus.CREATED);
     }
-    
+
     @GetMapping("/getall")
     public ResponseEntity<List<Education>> getAllEducation() {
-        List<Education> educations=iEducationService.getAllEducation();
+        List<Education> educations = iEducationService.getAllEducation();
         return new ResponseEntity<>(educations, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteEducation(@PathVariable ("id")Long id) {
+    public ResponseEntity<?> deleteEducation(@PathVariable("id") Long id) {
         iEducationService.deleteEducation(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping("/update")
-    public ResponseEntity <Education> updateEducation(@RequestBody Education education) {
+    public ResponseEntity<Education> updateEducation(@RequestBody Education education) {
         Education updateEducation = iEducationService.updateEducation(education);
-        return new ResponseEntity<>(updateEducation,HttpStatus.OK);
+        return new ResponseEntity<>(updateEducation, HttpStatus.OK);
     }
-    
+
     @GetMapping("/getone/{id}")
     public ResponseEntity<Education> getEducationById(@PathVariable("id") Long id) { //(@PathVariable("id") Long id) {
         Education education = iEducationService.getEducationById(id);
         return new ResponseEntity<>(education, HttpStatus.OK);
     }
-    
+
 }

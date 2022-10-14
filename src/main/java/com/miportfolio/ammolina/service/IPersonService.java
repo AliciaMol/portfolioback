@@ -13,11 +13,15 @@ import java.util.List;
  * @author Sisita
  */
 public interface IPersonService {
-    
-    public List<Person>getAllPerson();
+
+    public List<Person> getAllPerson();
+
     public Person addPerson(Person person);
+
     public void deletePerson(Long id);
+
     public Person getPersonById(Long id);
+
     public Person updatePerson(Person person);
     /* Uso save para agregar o editar*/
 }

@@ -9,8 +9,9 @@ package com.miportfolio.ammolina.exception;
  *
  * @author Sisita
  */
-public class UserNotFoundException extends RuntimeException{
-    public UserNotFoundException(String message){
+public class UserNotFoundException extends RuntimeException {
+
+    public UserNotFoundException(String message) {
         super(message);
     }
     /*Va a llamar al constructor en esa clase y le va a pasar el mensaje*/

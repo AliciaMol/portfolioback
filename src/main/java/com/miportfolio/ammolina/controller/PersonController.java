@@ -38,19 +38,19 @@ public class PersonController {
     evitamos crear objetos, sino q las relacionamos mediante la 
     inyeccion de dependencias. Asi, la app se vuelve mantenible
     y escalable*/
-    
     private final IPersonService ipersonService; //Es una interface
+
     @Autowired
     public PersonController(IPersonService ipersonService) {
         this.ipersonService = ipersonService;
     }
-    
+
 //    List<Persona> listaPersonas = new ArrayList();
     //A continuacion vamos generando todos los endpoints.
     @PostMapping("/add")
     public ResponseEntity<Person> addPerson(@RequestBody Person person) {
         Person newPerson = ipersonService.addPerson(person);
-       return new ResponseEntity<>(newPerson, HttpStatus.CREATED);
+        return new ResponseEntity<>(newPerson, HttpStatus.CREATED);
     }
 
     @GetMapping("/getall")
@@ -58,8 +58,8 @@ public class PersonController {
     public ResponseEntity<List<Person>> getAllPerson() {
         //Llamamos al servicio para hacer que nos devuelva la lista de personas
 //        return listaPersonas;
-        List<Person> persons= ipersonService.getAllPerson();
-        return new ResponseEntity<> (persons, HttpStatus.OK);
+        List<Person> persons = ipersonService.getAllPerson();
+        return new ResponseEntity<>(persons, HttpStatus.OK);
 //      Entonces dentro de la respuesta, ponemos la lista de personas
 //      en el cuerpo y pasamos además el código de estado http que
 //      será un éxito.
@@ -73,11 +73,11 @@ public class PersonController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Person> updatePerson(@RequestBody Person person){
+    public ResponseEntity<Person> updatePerson(@RequestBody Person person) {
         Person updatePerson = ipersonService.updatePerson(person);
-        return new ResponseEntity<> (updatePerson, HttpStatus.OK);
+        return new ResponseEntity<>(updatePerson, HttpStatus.OK);
     }
-    
+
 //    @PutMapping("/update/{id}")
 //    public Person editPerson(@PathVariable Long id,
 //            @RequestParam("name") String newName,
@@ -96,7 +96,6 @@ public class PersonController {
 //        ipersonService.savePerson(person);
 //        return person;
 //    }
-
     @GetMapping("/getone/{id}")
     public ResponseEntity<Person> getPersonById(@PathVariable("id") Long id) { //searchPerson(@PathVariable Long id) {
         Person person = ipersonService.getPersonById(id);
@@ -104,8 +103,7 @@ public class PersonController {
     }
     /* Si quiero buscar por id, agregar lo que difiere de lo comentado,
     ** logre hacerlo funcionar*/
-    
-    
+
 //     @GetMapping("/getone")  //@GetMapping("/person/getone/{id}")
 //    public Person searchPerson() { //searchPerson(@PathVariable Long id) {
 //        return ipersonService.searchPerson((long)1);
