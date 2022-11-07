@@ -26,7 +26,7 @@ public class Skills implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long person_id;
-    private Integer type;    //hard o soft
+    private Boolean type_skill;    //hard o soft
     private Long percent;
     private String title;
     private String image_src;
@@ -38,10 +38,10 @@ public class Skills implements Serializable {
     public Skills() {
     }
 
-    public Skills(Long id, Long person_id, Integer type, Long percent, String title, String image_src, Boolean show_image, String outer_stroke_color, String inner_stroke_color, String background_color) {
+    public Skills(Long id, Long person_id, Boolean type_skill, Long percent, String title, String image_src, Boolean show_image, String outer_stroke_color, String inner_stroke_color, String background_color) {
         this.id = id;
         this.person_id = person_id;
-        this.type = type;
+        this.type_skill = type_skill;
         this.percent = percent;
         this.title = title;
         this.image_src = image_src;
