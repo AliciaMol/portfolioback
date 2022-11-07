@@ -53,7 +53,7 @@ public class Skills implements Serializable {
 
     @Override
     public String toString() {
-        return "Skills{" + "id=" + id + ", person_id=" + person_id + ", type=" + type + ", percent=" + percent + ", title=" + title + ", image_src=" + image_src + ", show_image=" + show_image + ", outer_stroke_color=" + outer_stroke_color + ", inner_stroke_color=" + inner_stroke_color + ", background_color=" + background_color + '}';
+        return "Skills{" + "id=" + id + ", person_id=" + person_id + ", type skill=" + type_skill + ", percent=" + percent + ", title=" + title + ", image_src=" + image_src + ", show_image=" + show_image + ", outer_stroke_color=" + outer_stroke_color + ", inner_stroke_color=" + inner_stroke_color + ", background_color=" + background_color + '}';
     }
 
 }
