@@ -14,12 +14,12 @@ public class AmmolinaApplication {
     public static void main(String[] args) {
         SpringApplication.run(AmmolinaApplication.class, args);
     }
-/*https://portfoliofront-18a58.web.app*/
+/*http://localhost:4200 https://portfoliofront-18a58.web.app*/
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowCredentials(true);
-        corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+        corsConfiguration.setAllowedOrigins(Arrays.asList("https://portfoliofront-18a58.web.app"));
         corsConfiguration.setAllowedHeaders(Arrays.asList("Origin", "Access-Control-Allow-Origin", "Content-Type",
                 "Accept", "Authorization", "Origin, Accept", "X-Request-With",
                 "Access-Control-Request-Method", "Access-Control-Request-Headers"));
