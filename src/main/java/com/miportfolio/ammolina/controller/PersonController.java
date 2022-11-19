@@ -12,6 +12,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 //import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,6 +48,7 @@ public class PersonController {
 
 //    List<Persona> listaPersonas = new ArrayList();
     //A continuacion vamos generando todos los endpoints.
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/add")
     public ResponseEntity<Person> addPerson(@RequestBody Person person) {
         Person newPerson = ipersonService.addPerson(person);
@@ -65,6 +67,7 @@ public class PersonController {
 //      será un éxito.
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deletePerson(@PathVariable("id") Long id) {
 //        listaPersonas.remove(id);
@@ -72,6 +75,7 @@ public class PersonController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/update")
     public ResponseEntity<Person> updatePerson(@RequestBody Person person) {
         Person updatePerson = ipersonService.updatePerson(person);
