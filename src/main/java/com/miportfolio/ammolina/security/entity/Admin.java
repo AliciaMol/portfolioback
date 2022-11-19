@@ -46,7 +46,7 @@ public class Admin implements UserDetails {
         List<GrantedAuthority> authorities;
         authorities
                 = user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.
-                getRoleName().name())).collect(Collectors.toList());
+                getRolName().name())).collect(Collectors.toList());
 
         return new Admin(user.getName(), user.getNameUser(),
                 user.getPassword(), authorities);
