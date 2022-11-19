@@ -32,7 +32,7 @@ public class Rol implements Serializable {
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    private RolName rolName;
+    private RolName roleName;
     //anotation que define los valores que vamos a ingresar, que sean de tipo
     //string, solo alfanuméricos
     
@@ -40,7 +40,7 @@ public class Rol implements Serializable {
     public Rol() {
     }
 
-    public Rol(RolName rolName) {
-        this.rolName = rolName;
+    public Rol(RolName roleName) {
+        this.roleName = roleName;
     }
 }
